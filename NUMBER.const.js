@@ -4,18 +4,3 @@ export const G_RENDER_PHASE_IDS = {
 	UNMOUNT: 2,
 	UPDATE:  3,
 };
-export const G_APPLY_COLLECTED_ATTRIBUTES_OPTION_IDS = {
-	SET_ATTRIBUTE:   1,
-	SET_STYLE:       2,
-	SET_DATASET:     3,
-	ADD_CHILDS:      4,
-	ADD_LISTENER:    5,
-	GET_CHILD_AT:    6,
-	REMOVE_LISTINER: 7,
-	REMOVE_ELEMENT:  8,
-	REMOVE_CLASS:    9
-};
-export const G_OPERATION_IDS = {
-	CREATE: 1,
-	APPLY:  2
-};

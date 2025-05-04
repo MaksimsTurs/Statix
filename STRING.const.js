@@ -6,7 +6,3 @@ export const G_RENDER_PHASE_NAMES = {
 	2: "UNMOUNT",
 	3: "UPDATE"
 };
-export const G_OPERATION_NAMES    = {
-	1: "CREATE",
-	2: "APPLY"
-}
