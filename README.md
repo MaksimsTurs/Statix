@@ -7,7 +7,7 @@ Creating a simple component with JS and Statix.
 import statix from "statix.core.js";
 
 function Button(props) {
-	const instance = new statix.Statix(props.$init);
+	const instance = new statix.Statix({ $init: props.$init });
 	const statixDOM = instance.statixDOM();
 
 	const button = statixDOM
@@ -48,7 +48,7 @@ Creat a simple component with Statix and existing in the DOM static element. Sta
 import statix from "statix.core.js";
 
 function Button(props) {
-	const instance = new statix.Statix(props.$init);
+	const instance = new statix.Statix({ $init: props.$init });
 	const statixDOM = instance.getStatixDOM();
 
 	statixDOM.setRootBySelector(props.selector);
@@ -72,7 +72,7 @@ function onUpdate(instance, curr, prev) {
 import Button from "/components/Button.js";
 
 // You not need to mount the element because it is alredy in DOM. 
-const button_1 = Button({ $init: 0 });
-const button_2 = Button({ $init: 20 });
+const button_1 = Button({ selector: "#selector_1", $init: 0 });
+const button_2 = Button({ selector: ".selector_2", $init: 20 });
 ```
 Every element have 3 lifecycle functions, `onMount`, `onUnmount` and `onUpdate`. `onMount` is called each time root element is mounted to the DOM, you can set new state in the `onMount` cycle but `onUpdate` function will be called only after the `onMount` function is executed. You can not set new state in the `onUpdate` and `onUnmount` cycle, by trying it will be cause `StatixInvalidSetStateCall` error.\
