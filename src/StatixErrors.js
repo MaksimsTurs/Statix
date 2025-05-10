@@ -1,51 +1,57 @@
-import {
-	G_ERROR_NAME
-} from "../STRING.const.js";
-
 import isFunction from "./utils/isFunction.utils.js";
 import isObject from "./utils/isObject.utils.js";
 
-import getRenderPhaseName from "./utils/getRenderPhaseName.utils.js";
-import getOperationName from "./utils/getOperationName.utils.js";
-
-class StatixInvalidSetStateCall extends Error {
-	constructor(renderPhaseId) {
-		super();
-
-		this.name = G_ERROR_NAME;
-		this.message = `You can not call "setState" in "${getRenderPhaseName(renderPhaseId)}" phase!`;
-	}
-}
-
 class StatixInvalidTypeOrInstance extends Error {
-	constructor(typeOrObject, mustBe, were) {
+	/**
+	 *	@param {any} currObject
+	 *	@param {any} mustBe
+	 *	@param {string} were 
+	 */
+	constructor(currObject, mustBe, were) {
 		super();
 
-		this.name = G_ERROR_NAME;
+		this.name = "[Statix]";
 
 		if(isFunction(mustBe)) {
 			mustBe = mustBe.name;
 		}
 
-		if(isObject(typeOrObject)) {
-			typeOrObject = typeOrObject.toString().replace(/\[object (.*)\]/, "$1");
+		if(isObject(currObject)) {
+			currObject = currObject.toString().replace(/\[object (.*)\]/, "$1");
 		}
 
-		this.message = `"${were}" must be type of or instance of "${mustBe}" but is "${typeOrObject}"!`;
+		this.message = `"${were}" must be type of or instance of "${mustBe}" but is "${currObject}"!`;
 	}
 }
 
-class StatixInvalidOperationAndAttribute extends Error {
-	constructor(operationId, attribute) {
+class StatixInvalidRendererName extends Error {
+	/**
+	 *	@param {string} name 
+	 */
+	constructor(name) {
 		super();
 
-		this.name = G_ERROR_NAME;
-		this.message = `Attribute or DOM manipulation "${attribute}" can not be applyed in operation "${getOperationName(operationId)}"`;
+		this.name = "[Statix]";
+		this.message = `Invalid renderer name "${name}"!`;
+	}
+}
+
+class StatixInvalidArgumentsLength extends Error {
+	/**
+	 *	@param {number} isLength
+	 *	@param {number} mustBeLength
+	 *	@param {string} functionName 
+	 */
+	constructor(isLength, mustBeLength, functionName) {
+		super();
+
+		this.name = "[Statix]";
+		this.message = `Invalid function "${functionName}" arguments length, must be ${mustBeLength} is "${isLength}"!`;
 	}
 }
 
 export { 
-	StatixInvalidOperationAndAttribute,
 	StatixInvalidTypeOrInstance,
-	StatixInvalidSetStateCall
+	StatixInvalidRendererName,
+	StatixInvalidArgumentsLength
 };

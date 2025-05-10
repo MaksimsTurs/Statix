@@ -5,13 +5,11 @@ import StatixDOM from "./StatixDOM.js";
 import Utils from "./Utils.js";
 
 import {
-	G_DATASET_LIST_KEY
+	G_STATIX_DATASET_ID
 } from "../STRING.const.js";
 
 const statix = { 
-	CONST: {
-		DATASET_KEY: G_DATASET_LIST_KEY
-	},
+	CONST: { DATASET_ID: G_STATIX_DATASET_ID },
 	Statix,
 	StatixDOM,
 	Utils 

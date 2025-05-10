@@ -1,9 +1,8 @@
 "use strict"
 
 /**
- *	@import {
- *		StatixDelayCallback,
- *	} from "../types.js"; 
+ *	@typedef {(...any) => any} StatixDelayCallback
+ *	Function that will be executed after some delay. 
  */
 
 const Utils = {
